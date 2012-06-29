@@ -16,4 +16,4 @@ You don't have to worry about Carbon types or constants. For the modifier mask, 
 
 ## Tip of the Hat
 
-This was all inspired by PTKeyCombo and the superb [ShortcutRecorder](http://code.google.com/p/shortcutrecorder/).
+This was all inspired by PTHotKey and the superb [ShortcutRecorder](http://code.google.com/p/shortcutrecorder/).
