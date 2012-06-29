@@ -13,3 +13,7 @@ You are returned an opaque pointer from the registration, hang onto it, you will
 ## All Cocoa, All the Time
 
 You don't have to worry about Carbon types or constants. For the modifier mask, use the constants defined in `NSEvent.h`, `NSCommandKeyMask` and friends. 
+
+## Tip of the Hat
+
+This was all inspired by PTKeyCombo and the superb [ShortcutRecorder](http://code.google.com/p/shortcutrecorder/).
