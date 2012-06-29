@@ -4,7 +4,7 @@ A super-simple, modern interface to system hot keys in cocoa.
 
 ## Usage
 
-The API, whilst horribly undocumented, is fairly trivial. Create a PTKeyCombo using a keycode and modifier mask, then register it with a handler block.
+The API, whilst horribly undocumented, is fairly trivial. Create a DGGKeyCombo using a keycode and modifier mask, then register it with a handler block.
 
 Boom! Your block will be invoked whenever the hotkey is pressed.
 
