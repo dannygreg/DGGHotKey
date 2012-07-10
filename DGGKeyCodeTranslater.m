@@ -38,7 +38,10 @@
 	UniCharCount actualStringLength = 0;
 	UniChar outChar[4];
 	UInt32 deadKeyState;
-	UCKeyTranslate((const UCKeyboardLayout *)uchr, keycode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit, &deadKeyState, maxStringLength, &actualStringLength, outChar);
+	OSStatus result = UCKeyTranslate((const UCKeyboardLayout *)CFDataGetBytePtr(uchr), keycode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit, &deadKeyState, maxStringLength, &actualStringLength, outChar);
+	if (result != noErr)
+		return nil;
+	
 	return [NSString stringWithCharacters:outChar length:actualStringLength];
 }
 
