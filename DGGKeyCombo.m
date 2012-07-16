@@ -85,4 +85,20 @@ NSString *const DGGKeyComboPlistRepModifierMaskKey = @"modifierMask";
 	return @{ DGGKeyComboPlistRepKeyCodeKey : [NSNumber numberWithUnsignedInteger:self.keyCode], DGGKeyComboPlistRepModifierMaskKey : [NSNumber numberWithUnsignedInteger:self.modifierMask] };
 }
 
+#pragma mark - Equality
+
+- (BOOL)isEqual:(id)object
+{
+	if ([object isKindOfClass:self.class])
+		return NO;
+	
+	DGGKeyCombo *comparisonObject = object;
+	return (comparisonObject.keyCode == self.keyCode && comparisonObject.modifierMask == self.modifierMask);
+}
+
+- (NSUInteger)hash
+{
+	return [[NSNumber numberWithUnsignedInteger:(self.keyCode + self.modifierMask)] hash];
+}
+
 @end
