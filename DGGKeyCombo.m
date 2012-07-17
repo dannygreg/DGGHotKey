@@ -26,6 +26,8 @@
 
 #import "DGGKeyCombo.h"
 
+#import "DGGKeyCodeTranslater.h"
+
 NSString *const DGGKeyComboPlistRepKeyCodeKey = @"keyCode";
 NSString *const DGGKeyComboPlistRepModifierMaskKey = @"modifierMask";
 
@@ -89,7 +91,7 @@ NSString *const DGGKeyComboPlistRepModifierMaskKey = @"modifierMask";
 
 - (BOOL)isEqual:(id)object
 {
-	if ([object isKindOfClass:self.class])
+	if (![object isKindOfClass:self.class])
 		return NO;
 	
 	DGGKeyCombo *comparisonObject = object;
@@ -99,6 +101,32 @@ NSString *const DGGKeyComboPlistRepModifierMaskKey = @"modifierMask";
 - (NSUInteger)hash
 {
 	return [[NSNumber numberWithUnsignedInteger:(self.keyCode + self.modifierMask)] hash];
+}
+
+#pragma mark - 
+
+- (NSString *)description
+{	
+	BOOL commandKey = self.modifierMask & NSCommandKeyMask;
+	BOOL optionKey = self.modifierMask & NSAlternateKeyMask;
+	BOOL shiftKey = self.modifierMask & NSShiftKeyMask;
+	BOOL controlKey = self.modifierMask & NSControlKeyMask;
+		
+	NSMutableString *returnString = [NSMutableString stringWithFormat:@"\n%@\n{", [super description]];
+	[returnString appendString:@"\n"];
+	if (commandKey)
+		[returnString appendString:@"Command, "];
+	if (optionKey)
+		[returnString appendString:@"Option, "];
+	if (shiftKey)
+		[returnString appendString:@"Shift, "];
+	if (controlKey)
+		[returnString appendString:@"Control, "];
+	
+	NSString *keyString = [DGGKeyCodeTranslater stringForKeycode:self.keyCode];
+	[returnString appendFormat:@"%@(%lu)", keyString, self.keyCode];
+	[returnString appendString:@"\n}"];
+	return returnString;
 }
 
 @end
