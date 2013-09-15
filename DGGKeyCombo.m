@@ -107,11 +107,11 @@ NSString *const DGGKeyComboPlistRepModifierMaskKey = @"modifierMask";
 
 - (NSString *)description
 {	
-	BOOL commandKey = self.modifierMask & NSCommandKeyMask;
-	BOOL optionKey = self.modifierMask & NSAlternateKeyMask;
-	BOOL shiftKey = self.modifierMask & NSShiftKeyMask;
-	BOOL controlKey = self.modifierMask & NSControlKeyMask;
 		
+	BOOL commandKey = (BOOL)(self.modifierMask & NSCommandKeyMask);
+	BOOL optionKey = (BOOL)(self.modifierMask & NSAlternateKeyMask);
+	BOOL shiftKey = (BOOL)(self.modifierMask & NSShiftKeyMask);
+	BOOL controlKey = (BOOL)(self.modifierMask & NSControlKeyMask);
 	NSMutableString *returnString = [NSMutableString stringWithFormat:@"\n%@\n{", [super description]];
 	[returnString appendString:@"\n"];
 	if (commandKey)
