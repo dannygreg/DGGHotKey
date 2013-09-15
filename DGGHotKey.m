@@ -45,7 +45,10 @@ static OSStatus DGGHotKeyPressedHandler(EventHandlerCallRef inHandlerRef, EventR
 BOOL DGGHotKeyHandlerInstalled = NO;
 UInt32 DGGLatestHotKeyID = 0;
 NSMutableDictionary *DGGHotKeyBlockMap = nil;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfour-char-constants"
 FourCharCode DGGHotKeyCarbonID = 'DGGH';
+#pragma clang diagnostic pop
 
 + (void)initialize
 {
