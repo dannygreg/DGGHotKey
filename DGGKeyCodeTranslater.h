@@ -28,6 +28,6 @@
 
 @interface DGGKeyCodeTranslater : NSObject
 
-+ (NSString *)stringForKeycode:(unsigned short)keycode;
++ (NSString *)stringForKeycode:(NSUInteger)keycode;
 
 @end

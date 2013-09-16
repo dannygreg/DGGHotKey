@@ -30,7 +30,7 @@
 
 @implementation DGGKeyCodeTranslater
 
-+ (NSString *)stringForKeycode:(unsigned short)keycode
++ (NSString *)stringForKeycode:(NSUInteger)keycode
 {
 	TISInputSourceRef keyboardLayout = TISCopyCurrentKeyboardLayoutInputSource();
 	CFDataRef uchr = TISGetInputSourceProperty(keyboardLayout , kTISPropertyUnicodeKeyLayoutData);
@@ -38,7 +38,7 @@
 	UniCharCount actualStringLength = 0;
 	UniChar outChar[4];
 	UInt32 deadKeyState;
-	OSStatus result = UCKeyTranslate((const UCKeyboardLayout *)CFDataGetBytePtr(uchr), keycode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit, &deadKeyState, maxStringLength, &actualStringLength, outChar);
+	OSStatus result = UCKeyTranslate((const UCKeyboardLayout *)CFDataGetBytePtr(uchr), (UInt16)keycode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit, &deadKeyState, maxStringLength, &actualStringLength, outChar);
 	if (result != noErr)
 		return nil;
 	
